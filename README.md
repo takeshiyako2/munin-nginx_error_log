@@ -5,7 +5,7 @@ This is munin plugin for count of Nginx error.log.
 
 ```
 # cd /usr/share/munin/plugins/
-# wget --no-check-certificate https://raw.githubusercontent.com/takeshiyako2/munin-nginx_error_log/master/capistrano_deploy
+# wget --no-check-certificate https://raw.githubusercontent.com/takeshiyako2/munin-nginx_error_log/master/nginx_error_log
 # chmod +x nginx_error_log
 # ln -s /usr/share/munin/plugins/nginx_error_log /etc/munin/plugins/nginx_error_log
 # munin-run nginx_error_log
