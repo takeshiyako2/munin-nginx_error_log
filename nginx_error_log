@@ -1,0 +1,48 @@
+#!/bin/sh
+# -*- sh -*-
+
+: << =cut
+
+=head1 NAME
+
+nginx_error_log - Plugin to Nginx error.log count.
+
+=head1 AUTHOR
+
+Contributed by Takeshi Yako
+https://github.com/takeshiyako2
+
+=head1 LICENSE
+
+MIT
+
+=head1 MAGIC MARKERS
+
+ #%# family=auto
+ #%# capabilities=autoconf
+
+=cut
+
+. $MUNIN_LIBDIR/plugins/plugin.sh
+
+if [ "$1" = "autoconf" ]; then
+        echo yes
+        exit 0
+fi
+if [ "$1" = "config" ]; then
+
+        echo 'graph_title Nginx error.log'
+        echo 'graph_args --base 1000 -l 0 '
+        echo 'graph_scale no'
+        echo 'graph_vlabel count in days'
+        echo 'graph_category nginx'
+        echo 'nginx_error_log.label count'
+        echo 'nginx_error_log.draw AREA'
+        print_warning nginx_error_log
+        print_critical nginx_error_log
+        exit 0
+fi
+
+LOG=${log:-/var/log/nginx/error.log}
+COUNT=`wc -l < $LOG`
+printf "nginx_error_log.value $COUNT\n"
