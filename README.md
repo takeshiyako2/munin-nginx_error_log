@@ -1,6 +1,8 @@
 This is munin plugin for count of Nginx error.log.
 
 
+![munin-nginx_error_log example](https://raw.githubusercontent.com/takeshiyako2/munin-nginx_error_log/master/images/example.png "munin-nginx_error_log example")
+
 # How to setup
 
 Change log file permission.
